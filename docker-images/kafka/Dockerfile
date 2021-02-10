@@ -39,6 +39,11 @@ RUN set -ex; \
         mkdir $KAFKA_EXPORTER_HOME; \
         tar xvfz kafka_exporter-${KAFKA_EXPORTER_VERSION}.linux-arm64.tar.gz -C $KAFKA_EXPORTER_HOME --strip-components=1; \
         rm -f kafka_exporter-${KAFKA_EXPORTER_VERSION}.linux-arm64.tar.gz*; \
+    elif [[ ${TARGETPLATFORM} = "linux/s390x" ]]; then \
+        curl -LO https://raw.githubusercontent.com/tuan-hoang1/strimzi-kafka-operator/master/kafka_exporter-1.2.0.linux-s390x.tar.gz; \
+        mkdir $KAFKA_EXPORTER_HOME; \
+        tar xvf kafka_exporter-${KAFKA_EXPORTER_VERSION}.linux-s390x.tar.gz -C $KAFKA_EXPORTER_HOME --strip-components=1; \
+        rm -f kafka_exporter-${KAFKA_EXPORTER_VERSION}.linux-s390x.tar.gz*; \
     else \
         curl -LO https://github.com/danielqsj/kafka_exporter/releases/download/v${KAFKA_EXPORTER_VERSION}/kafka_exporter-${KAFKA_EXPORTER_VERSION}.linux-amd64.tar.gz; \
         echo $KAFKA_EXPORTER_CHECKSUM_AMD64 > kafka_exporter-${KAFKA_EXPORTER_VERSION}.linux-amd64.tar.gz.sha512; \

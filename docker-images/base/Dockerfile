@@ -4,7 +4,7 @@ ARG TARGETPLATFORM
 
 RUN curl ftp://partners.redhat.com/1c5d859a/IBM-917ca288c24859a81f35b894e0b77589/RHEL-7.4-GA/RHEL-7-server.repo | sed -e "s@3919ee9d338684de51265ffce2111542/RHEL-7.4-RC@IBM-917ca288c24859a81f35b894e0b77589/RHEL-7.9-GA@g" >  /etc/yum.repos.d/rhel7-server.repo
 RUN yum -y update \
-    && yum -y install java-${JAVA_VERSION}-openjdk-headless openssl bind-utils \
+    && yum -y install java-${JAVA_VERSION}-openjdk-headless openssl bind-utils hostname \
     && yum -y clean all
 
 #####
